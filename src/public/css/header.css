@@ -1,0 +1,112 @@
+header {
+    background-color: #000a10ee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: white;
+    padding: 10px;
+}
+
+header img {
+    width: 50px;
+}
+
+header .div__icon {
+    display: flex;
+    gap: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+}
+
+header nav ul {
+    display: flex;
+
+    gap: 15px;
+    list-style: none;
+    padding: 10px;
+}
+header nav .ul__menu {
+    border-right:1px solid white;
+}
+header nav ul li {
+    transition: 0.2s;
+}
+header nav ul li a:hover{
+    color: black;
+    background-color: white;
+} 
+
+header nav .ul__mode li {
+    transition: 0.2s;
+}
+
+header nav ul li a {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    transition: 0.2s;
+}
+header button {
+    display: none;
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    
+}
+header button span {
+    font-size: 2.6em;
+}
+header .span__text {
+    display: none;
+}
+@media (max-width:630px) {
+    header {
+        position: relative;
+        height: 70px;
+        flex-direction: row-reverse;
+    }
+    header .div__icon {
+        position: absolute;
+        left: 5px;
+    }
+    header #close__menu {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+    }
+    header .span__text {
+        display: block;
+    }
+    header button {
+        display: block;
+    }
+    header nav {
+        position: absolute;
+        flex-direction: column;
+        right: 0;
+        top: 70px;
+        background-color: #000a10ee;
+        display:block;
+        z-index: 1;
+    }
+    header ul {
+        border: none;
+        flex-direction: column;
+    }
+    header nav ul li a {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        font-size: 1.1em;
+    }
+}

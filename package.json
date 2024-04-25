@@ -1,0 +1,29 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Esse projeto é um blog criando em nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Álvaro Gabriel",
+  "license": "ISC",
+  "repository": {
+    "url": "www.github.com/alvarogabriellimaramos"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express-handlebars": "^7.1.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
+    "nodemailer": "^6.9.13",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "dompurify": "^3.1.0",
+    "dotenv": "^16.4.5",
+    "nginx": "^1.0.8",
+    "tls": "^0.0.1"
+  }
+}

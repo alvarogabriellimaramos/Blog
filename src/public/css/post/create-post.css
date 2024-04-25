@@ -1,0 +1,81 @@
+main {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+}
+
+main form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    flex-direction: column;
+}
+
+main form div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    
+    gap:10px;
+}
+
+main form textarea {
+    padding: 10px;
+    outline: none;
+    background-color: #ffd4f4;
+    font-size: 1.1em;
+    height: 350px;
+    
+    width: 100%;
+    border: none;
+}
+
+main form input {
+    background-color: #ffd4f4;
+    outline: none;
+    font-size: 1.1em;
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+
+
+main form input:focus {
+    outline: 1px solid blue;
+}
+main form textarea:focus {
+    outline: 1px solid blue;
+}
+
+main form .div__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 30px;
+}
+
+main form .div__buttons button {
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+main form .div__buttons #publicar {
+    background-color: #69a4e1;
+    color: white;
+}
+
+@media (max-width:550px) {
+    main {
+        width: 100%;
+    }
+    main h1 {
+        font-size: 1.5em;
+    }
+}

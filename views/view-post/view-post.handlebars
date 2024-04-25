@@ -1,0 +1,22 @@
+{{>header}}
+
+<main>
+    <div class="div__username">
+        <span>
+            <a href="#">{{username}}</a>
+        </span>
+    </div>
+    <div class="div__post">
+        <h1>{{object.title}}</h1>
+        <div class="div__body">{{object.text}}</div>
+    </div>
+    <div class="div__create__comments">
+            <form >
+                <textarea id="create__comments" placeholder="Adicione um cometario" style="resize: none;"></textarea>
+                <button>Adicionar</button>
+            </form>
+        </div>
+        <div class="div__comments">
+
+        </div>
+</main>

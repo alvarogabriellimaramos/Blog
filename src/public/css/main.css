@@ -1,0 +1,98 @@
+main {
+    width: 100%;
+    height: 100%;
+    padding: 2vh;
+}
+
+main .container__post {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    gap: 30px;
+}
+main .container__post .div__title p {
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+main .container__post .div__post .div__username a {
+    font-size: 1.1em;
+    text-decoration: none;
+    color: black;
+}
+main .container__post .div__title {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+main .container__post .div__post {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+main .container__post .div__post .div__title a {
+    width: 100%;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+main .container__post .div__post a:hover{
+    text-decoration: underline;
+}
+main .next__page {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+main .next__page a {
+    text-decoration: none;
+    color: rgb(70, 70, 252);
+}
+
+main .next__page a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+main .nav__main {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+main .nav__main ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+main .nav__main ul li {
+    cursor: pointer;
+}
+main .nav__main ul li a{
+    text-decoration: none;
+    color:black;
+}
+main .nav__main ul li a:hover {
+    text-decoration: underline;
+}
+main .container__post .div__title  {
+    width: 100%;
+}
+
+@media (max-width: 630px) {
+    main .container__post .div__post .div__title a {
+        font-size: 16px;
+    }
+}

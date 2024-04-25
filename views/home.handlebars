@@ -1,0 +1,44 @@
+{{>header}}
+<main>
+    <nav class="nav__main">
+        <ul>
+            <li>
+                <a href="#">Recentes</a>
+            </li>
+            <li>
+                <a href="#">Programação</a>
+            </li>
+            <li>
+                <a href="#">Sobre o projeto</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container__post">
+        {{#each PostsAll}}
+            {{#each this.Posts}}
+                <div class="div__post">
+                    <div class="div__username">
+                        <a href="/{{../_id}}">
+                            <span> {{../username}} </span>
+                        </a>
+                    </div>
+                    <div class="div__title">
+                        <strong>
+                            <a href="/{{../_id}}/{{this._id}}">{{this.title}}</a>
+                        </strong>
+                    </div>
+                    <div class="div__likes__comments">
+                         <span style="font-size: 13px;"> Comentários {{length this.comments}} </span> -
+                         <span style="font-size:13px">
+                            {{formatDate this.date}}
+                         </span>
+                    </div>
+                </div>
+            {{/each}}
+        {{/each}}
+    </div>
+    <div class="next__page">
+        <a href="#" style="display:none;">Anterior</a>
+        <a href="#">Proxima Página</a>
+    </div>
+</main>
