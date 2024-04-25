@@ -4,7 +4,8 @@
   "description": "Esse projeto é um blog criando em nodejs",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "vercel-build": "npx prisma generate && npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "Álvaro Gabriel",
