@@ -10,7 +10,8 @@
 <h2>Recursos</h2>
 
 <ul>
-    <li><strong>Artigos:</strong> </li>
+    <li><strong> Novidade:</strong> No blog você poderá fazer postagem,sobre qualquer tema do seu interesse</li>
+    <li><strong> Notificações</strong> Você poderá receber notificações caso alguem comente em uma postagem sua</li>
 </ul>
 
 <h2>Tecnologias Utilizadas</h2>
