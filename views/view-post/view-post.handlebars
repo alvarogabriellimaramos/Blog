@@ -1,22 +1,47 @@
 {{>header}}
 
 <main>
-    <div class="div__username">
+    <div class="div__header">
+        <h1>{{object.title}}</h1>
         <span>
-            <a href="#">{{username}}</a>
+            <a href="/{{id}}">{{username}}</a>
         </span>
     </div>
     <div class="div__post">
-        <h1>{{object.title}}</h1>
-        <div class="div__body">{{object.text}}</div>
+        <div class="div__body">
+            {{{object.body}}}
+        </div>
     </div>
     <div class="div__create__comments">
-            <form >
-                <textarea id="create__comments" placeholder="Adicione um cometario" style="resize: none;"></textarea>
-                <button>Adicionar</button>
+            <form class="create__comments">
+                <textarea style="resize: none;" id="create__comments" placeholder="Digite seu comentário "></textarea>
+                <div><button>Enviar</button></div>
             </form>
         </div>
-        <div class="div__comments">
-
-        </div>
+        <ul class="comments">
+            {{#each object.comments}}
+                <li class="comment">
+                    <span class="username" style="font-weight: bold;">
+                        <a href="/username/{{this.username}}">{{this.username}}</a>
+                    </span> -
+                    <span class="date" style="font-size:12px; color: #666;)">{{formatDate this.date}}</span>
+                    <p class="content">{{this.comment}}</p>
+                    <form class="form__response__comments" style="margin-top:10px;">
+                        <textarea style="resize: none;" placeholder="Responde comentário" id="response__comment"></textarea>
+                        <button>Enviar</button>
+                    </form>
+                    <ul style="list-style: none;" class="ul__response__comments">
+                        {{#each this.response}}
+                        <li>
+                            <span class="username">
+                                <a href="/username/{{this.username}}">{{this.username}}</a>
+                            </span> -
+                            <span style="font-size:12px; color:#666;">{{formatDate this.date}}</span>
+                            <p>{{this.comment}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </li>
+            {{/each}}
+        </ul>
 </main>

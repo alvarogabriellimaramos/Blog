@@ -2,8 +2,8 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const html = require("./html.js")
 
-const EMAIL = process.env.EMAIL;
-const PASSWORD = process.env.PASSWORD;
+const EMAIL = 'alvarogabriel1103@hotmail.com';
+const PASSWORD = 'alalal##';
 
 module.exports = function (email,token,router) {
     const transport = nodemailer.createTransport({
@@ -11,6 +11,9 @@ module.exports = function (email,token,router) {
         auth: {
             user: EMAIL,
             pass: PASSWORD
+        },
+        tls: {
+            rejectUnauthorized: false
         }
     });
     const mailOptions = {

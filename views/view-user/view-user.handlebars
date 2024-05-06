@@ -3,31 +3,30 @@
     <nav class="nav__main">
         <ul>
             <li>
-                <a href="#">Recentes</a>
+                <a href="#" id="posts">Postagens</a>
             </li>
             <li>
-                <a href="#">Programação</a>
+                <a href="#" id="profile">Perfil</a>
             </li>
             <li>
-                <a href="#">Sobre o projeto</a>
+                <a href="#">Comentários</a>
             </li>
         </ul>
     </nav>
-    <div class="container__post">
-        {{#each PostsAll}}
+    <div class="container">
+        <div class="div__profile">
+            <strong>{{username}}</strong>
+            <p>{{{biografy}}}</p>
+        </div> 
+        {{#each PostUser}}
             {{#each this.Posts}}
                 <div class="div__post">
-                    <div class="div__username">
-                        <a href="/user/{{../_id}}">
-                            <span> {{../username}} </span>
-                        </a>
-                    </div>
                     <div class="div__title">
                         <strong>
                             <a href="/view-post/{{../_id}}/{{this._id}}">{{this.title}}</a>
                         </strong>
                     </div>
-                    <div class="div__likes__comments">
+                     <div class="div__likes__comments">
                          {{#if (and this.comments.[0].response this.comments)}}
                                 <span>Comentários: {{length this.comments}}</span> - 
                                 <span>Respostas: {{totalResponses this.comments}}</span> -
@@ -42,9 +41,5 @@
                 </div>
             {{/each}}
         {{/each}}
-    </div>
-    <div class="next__page">
-        <a href="#" style="display:none;">Anterior</a>
-        <a href="#">Proxima Página</a>
     </div>
 </main>

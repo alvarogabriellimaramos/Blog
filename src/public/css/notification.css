@@ -1,0 +1,78 @@
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.notification {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    line-height: 1.6em;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.notification .date {
+    position:absolute;
+    right: 10px;
+    bottom: 5px;
+}
+.notification span {
+    flex: 1;
+    margin-right: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.notification button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: 0.2s;
+    margin-bottom: 5px;
+}
+.notification button span {
+    font-size: 1.8em;
+}
+.notification button:hover {
+    color: #666;
+}
+.notification a {
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+}
+.notification a:hover{
+    text-decoration: underline;
+}
+@media only screen and (max-width: 630px) {
+    main {
+        max-width:100%;
+        padding:0;
+    }
+    .notification{
+        flex-direction: column;
+        text-align: left;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .notification span {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

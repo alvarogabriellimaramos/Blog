@@ -5,6 +5,7 @@ async function CreateToken (user) {
     const configUser = {
         username: user.username,
         email: user.email,
+        id: user.id,
         password: await Hash(user.password)
     }
     const SECRET = process.env.SECRET;

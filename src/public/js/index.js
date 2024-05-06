@@ -3,6 +3,10 @@ const nav__cont = document.querySelector('.nav__cont');
 const span__text = document.querySelector('.span__text');
 
 
+document.querySelector('.div__icon').addEventListener('click',function() {
+    window.location.href = '/';
+});
+
 async function TokenStorage() {
     if (localStorage.token === undefined) {
         return;
@@ -63,7 +67,13 @@ window.addEventListener("resize",async function() {
     }
 });
 
-
+window.addEventListener('load',function() {
+    if (window.innerWidth > 630) {
+        close__menu.style.display = 'none';
+        return;
+    }
+    close__menu.style.display = 'block';
+});
 
 menu__open.addEventListener('click',async function() {
     menu__open.style.display = 'none';
@@ -83,3 +93,33 @@ close__menu.addEventListener("click",function() {
     navs.forEach(nav => nav.style.display = 'none');
 });
 
+
+const Notifications = async () => {
+    try {
+        const notification = document.querySelector(".number__notification");
+        const data = await fetch("/notification",{
+            headers: {"Authorization": localStorage.token},
+            method: "GET"
+        });
+        const DataJson = await data.json();
+        notification.textContent = DataJson.notification;
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+Notifications();
+
+
+document.getElementById('notification').addEventListener('click',function() {
+    window.location.href = `/view-notification?token=${localStorage.token}`;
+});
+
+document.getElementById('edit-profile').addEventListener('click',function () {
+    window.location.href = `/edit-profile?token=${localStorage.token}`;
+});
+
+document.getElementById('my-post').addEventListener('click',function () {
+    window.location.href = `/my-post?token=${localStorage.token}`;
+});

@@ -1,81 +1,76 @@
 main {
     width: 70%;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 20px;
     background-color: white;
 }
 
 main form {
-    width: 100%;
     display: flex;
-    align-items: center;
-    gap: 55px;
+    width: 100%;
     flex-direction: column;
+    gap: 20px;
 }
-
+main form h1 {
+    text-align: center;
+    margin-top: 5vh;
+}
 main form div {
+    margin: 15px;
     display: flex;
-    width: 100%;
-    align-items: center;
-    
-    gap:10px;
-}
-
-main form textarea {
-    padding: 10px;
-    outline: none;
-    background-color: #ffd4f4;
-    font-size: 1.1em;
-    height: 350px;
-    
-    width: 100%;
-    border: none;
+    gap: 10px;
 }
 
 main form input {
-    background-color: #ffd4f4;
+    padding: 10px;
+    font-size: 1em;
     outline: none;
-    font-size: 1.1em;
-    padding: 10px;
     border: none;
-    width: 100%;
+    background-color: #f8efed;
+    border-radius: 5px;
 }
-
-
 main form input:focus {
-    outline: 1px solid blue;
-}
-main form textarea:focus {
-    outline: 1px solid blue;
+    outline: 2px solid #006CE7;
 }
 
-main form .div__buttons {
-    display: flex;
-    flex-direction: row;
+
+@media (max-width: 730px) {
+    main {
+        width: 100%;
+        min-width: 400px;
+        border: none;
+        padding: 0;
+    }
+   
+}
+main form .div__buttons{
+    display:flex;
     justify-content: end;
-    gap: 30px;
 }
-
-main form .div__buttons button {
+main form .div__buttons div {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
     padding: 10px;
-    background-color: transparent;
+    
+}
+main form .div__buttons div button {
     border: none;
     font-size: 1em;
     cursor: pointer;
+    background-color: transparent;
 }
-main form .div__buttons #publicar {
-    background-color: #69a4e1;
+main form .div__buttons div #publicar {
+    background-color: #006CE7;
     color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
-
-@media (max-width:550px) {
-    main {
-        width: 100%;
-    }
-    main h1 {
-        font-size: 1.5em;
-    }
+.tox-tinymce {
+    background-color: #f1dfda;
 }
+.tox-toolbar-overlord {
+    overflow-x:scroll;
+}
+/* Estilo para a área de conteúdo do TinyMCE */

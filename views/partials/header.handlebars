@@ -5,11 +5,11 @@
     <button id="close__menu" style="display: none;">
         <span class="material-symbols-outlined icon__header">close</span>
     </button>
-    <div class="div__icon">
+    <div class="div__icon" style="cursor:pointer;">
         <span style="font-size:1.2em ;">
             Node Blog
         </span>
-        <img src="http://localhost:{{PORT}}/imgs/node.png" alt="Node Photo">
+        <img src="{{img}}" alt="Node Photo">
     </div>
     <nav class="nav__menu nav">
 
@@ -19,14 +19,6 @@
             </li>
             <li>
                 <a href="/register">Registro</a>
-            </li>
-        </ul>
-        <ul class="ul__mode">
-            <li id="dark__mode">
-                <a href="#">
-                    <span> Dark </span>
-                    <span class="material-symbols-outlined icon__header" style="font-size: 16px;">dark_mode</span>
-                </a>
             </li>
         </ul>
     </nav>
@@ -39,21 +31,21 @@
                 </a>
             </li>
             <li>
-                <a href="#">Editar Perfil</a>
+                <a href="#" id="edit-profile">Editar Perfil</a>
             </li>
             <li>
                 <a href="#" id="logout">Logout</a>
             </li>
             <li>
-                <a href="#">Minhas Postagens</a>
+                <a href="#" id="my-post">Minhas Postagens</a>
             </li>
-            
         </ul>
-        <ul class="ul__mode">
-            <li id="dark__mode">
-                <a href="">
+        <ul class="ul__notification">
+            <li id="notification" style="display:flex; align-items:center;">
+                <a href="#" style="position: relative;">
                     <span class="span__text">Notificações</span>
                     <span class="material-symbols-outlined icon__header" style="font-size: 16px;">notifications</span>
+                    <span class="number__notification" style="font-size: 12px;">{{notification}}</span>
                 </a>
             </li>
         </ul>

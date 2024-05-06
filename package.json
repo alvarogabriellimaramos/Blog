@@ -16,15 +16,15 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express-handlebars": "^7.1.2",
+    "handlebars": "^4.7.8",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2",
     "nodemailer": "^6.9.13",
+    "sanitize-html": "^2.13.0",
     "validator": "^13.11.0"
   },
   "devDependencies": {
-    "dompurify": "^3.1.0",
     "dotenv": "^16.4.5",
-    "nginx": "^1.0.8",
-    "tls": "^0.0.1"
+    "tinymce": "^7.0.1"
   }
 }

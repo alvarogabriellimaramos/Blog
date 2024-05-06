@@ -1,0 +1,42 @@
+body {
+    background-color: #e2e1e1;
+}
+main {
+    background-color: white;
+    max-width: 800px;
+    margin:20px auto;
+    padding:3vh;
+    border-radius: 5px;
+    display:flex;
+    gap:20px;
+    flex-direction: column;
+}
+
+main h1 {
+    text-align: center;
+    font-size: 3em;
+    color:#666;
+}
+
+main strong {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+main p {
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+main span {
+    text-align: center;
+}
+main span a {
+    text-decoration: none;
+    color: #666;
+}
+
+main span a:hover {
+    text-decoration: underline;
+}

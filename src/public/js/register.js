@@ -1,4 +1,5 @@
 const form = document.querySelector("form");
+const button = document.querySelector('button');
 
 const inputs = document.querySelectorAll('input');
 const text = document.querySelector(".text");
@@ -18,11 +19,14 @@ form.addEventListener('submit',async event => {
             })
         });
         const DataJson = await data.json();
+        console.log(DataJson)
         if (DataJson.messagem !== 'Enviamos um token de verificação para o seu e-mail') {
             text.textContent = DataJson.messagem;
+            button.disabled = false;
             return;
-        }
+        };
         text.textContent = DataJson.messagem;
+        button.disabled = true;
     }
     catch (e) {
         console.log(e);

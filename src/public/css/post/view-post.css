@@ -1,97 +1,184 @@
 main {
-    width: 70%;
+    max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-left: 1px solid black;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-main .div__create__comments {
-    padding: 2vh;
+main .div__header {
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding:10px;
+    align-items: center;
+    margin-bottom:10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-main .div__create__comments form {
-    display: flex;
-    width: 100%;
-    gap: 10px;
-}
-main .div__create__comments form textarea {
-    width: 50%;
-    height: 50px;
-    background-color: #f3dcf6;
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1.1em;
-}
-main form textarea:focus {
-    outline: 1px solid blue;
-}
-main .div__create__comments form button {
-    border: none;
-    font-size: 1.1em;
-    background-color: transparent;
-    outline: 1px solid black;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.2s;
-}
-main .div__create__comments form button:hover {
-    background-color: black;
-    outline: none;
-    color: white;
-}
-main h1 {
-    text-align: center;
+.div__username {
+    margin-bottom: 20px;
 }
 
-main .div__post {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 3vh;
-}
-main .div__body {
-    font-size: 1.1em;
-    line-height: 2em;
-}
-
-main .div__body::first-letter{
-    font-size: 1.5em;
-}
-main .div__username {
-    position: relative;
-}
-main .div__username a {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.div__header a {
     text-decoration: none;
-    color: rgb(86, 86, 243);
-    padding: 2px;
-    background-color: rgb(220, 220, 250);
+    color: #007bff;
+    font-size: 1em;
 }
-main .div__username a:hover{
+.div__header a:hover{
     text-decoration: underline;
 }
+.div__post {
+    padding:2vh;
+    margin-bottom: 30px;
+}
 
-@media (max-width: 630px) {
+.div__post h1 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 24px;
+}
+
+.div__body {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.div__create__comments {
+    margin-bottom: 30px;
+}
+.div__create__comments form {
+    display:flex;
+    flex-direction: column;
+    align-items: end;
+}
+.create__comments textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 1.1em;
+    color: #333;
+}
+.create__comments textarea:focus {
+    outline:1px solid #007bff;
+}
+.create__comments button {
+    padding: 10px 20px;
+    margin-top: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.comments {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #a4ebe9;
+    border-radius: 10px;
+}
+
+.comment .username {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.comment .date {
+    font-size: 14px;
+    color: #666;
+}
+
+.comment .content {
+    margin-top: 10px;
+    color: #444;
+    font-size: 16px;
+}
+.comment a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.form__response__comments {
+    display:flex;
+    flex-direction:column;
+    align-items: end;
+}
+.form__response__comments textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+    color: #333;
+}
+.form__response__comments textarea:focus {
+    outline:1px solid #007bff;
+}
+.form__response__comments button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+@media (max-width: 730px) {
+
+    .div__header h1 {
+        font-size: 1.5em;
+    }
+    .create__comments{
+        padding:5px;
+    }
+}
+@media only screen and (max-width: 630px) {
     main {
+        max-width: 100%;
+        padding:0;
+    }
+    .div__username a {
+        display: block;
+        font-size: 18px;
+    }
+
+    .create__comments textarea,
+    .form__response__comments textarea {
         width: 100%;
-        border: none;
+        font-size: 14px;
     }
-    main h1 {
-        font-size: 1.8em;
-    }
-    main .div__username {
-        height: 20px;
-    }
-    main .div__create__comments form {
-        flex-direction: column;
-        align-items: end;
-    }
-    main .div__create__comments form textarea {
+
+    .form__response__comments button {
         width: 100%;
     }
+}
+
+.ul__response__comments li {
+    background-color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    color: #666;
+}
+.ul__response__comments li p {
+    margin-top: 5px;
+}
+
+.tox-tinymce {
+    background-color: #f1dfda;
+}
+.tox-toolbar-overlord {
+    overflow-x:scroll;
 }

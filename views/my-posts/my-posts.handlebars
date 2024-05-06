@@ -1,0 +1,38 @@
+{{> header}}
+<main>
+    <h1>Suas Postagens</h1>
+    <div class="container">
+        {{#if (eq PostUser null)}}
+            <p style="text-align:center; padding-bottom:10px;">Você não tem nenhuma postagem.</p>
+        {{else}}
+        {{#each PostUser}}
+        {{#each this.Posts}}
+        <div class="div__post">
+            <div class="div__title">
+                <strong>
+                    <a href="/view-post/{{../_id}}/{{this._id}}">{{this.title}}</a>
+                </strong>
+            </div>
+            <div class="div__likes__comments">
+                {{#if (and this.comments.[0].response this.comments)}}
+                <span>Comentários: {{length this.comments}}</span> -
+                <span>Respostas: {{totalResponses this.comments}}</span> -
+                {{else}}
+                <span>Comentários: 0</span> -
+                <span>Respostas: 0 </span> -
+                {{/if}}
+                <span style="font-size:13px">
+                    {{formatDate this.date}}
+                </span>
+            </div>
+            <div class="div__button">
+                <button>
+                    <span class="material-symbols-outlined icon__header" style="font-size: 1..8em;">delete</span>
+                </button>
+            </div>
+        </div>
+        {{/each}}
+        {{/each}}
+        {{/if}}
+    </div>
+</main>

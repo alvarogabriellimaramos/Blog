@@ -1,7 +1,9 @@
 
-
+body {
+    background-color: #c4c2c2;
+}
 .container {
-    background-color: #f8efed;
+    background-color: white;
     position: absolute;
     left: 50%;
     top: 50%;

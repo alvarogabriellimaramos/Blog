@@ -8,7 +8,9 @@ const SchemaPost = new mongoose.Schema({
     photo: {
         type: String
     },
-    
+    id: {
+        type: String
+    },
     Posts: [
         {
             title: {
@@ -23,9 +25,9 @@ const SchemaPost = new mongoose.Schema({
                 type:String,
                 required:false
             },
-            text: {
-                type:String,
-                required:true
+            body: {
+                type: String,
+                required: true
             },
             image: {
                 type: String,
@@ -37,7 +39,19 @@ const SchemaPost = new mongoose.Schema({
             },
             comments: [{
                 username: String,
-                comment: String
+                comment: String,
+                date: {
+                    type: Date,
+                    default: new Date().toISOString()
+                },
+                response: [{
+                    username: String,
+                    comment:String,
+                    date: {
+                        type: Date,
+                        default: new Date().toISOString()
+                    }
+                }]
             }]
         }
     ]

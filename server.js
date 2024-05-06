@@ -6,4 +6,4 @@ const PORT = process.env.PORT || 8081;
 
 database(function() {
     config.listen(PORT,() => console.log('Server Running ' + PORT));
-})
+});

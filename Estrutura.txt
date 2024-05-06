@@ -1,1 +1,4 @@
 Criar um blog,onde os usuarios poderão vizualizar postagens e caso o usuario queira fazer uma postagem ele terá que ser logar
+
+1 - coloca a funcionalidade em que o usuario poderá vizualizar suas notificações
+2 - coloca a funcionalidade em que o usuario poderá criar um comentário,ele também poderá excluir,se desejar

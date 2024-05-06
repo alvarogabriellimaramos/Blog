@@ -1,0 +1,20 @@
+{{> header}}
+<main>
+    <h1>Suas notificações</h1>
+    {{#if (eq lenghtNotificaton 0)}}
+        <strong>Você não tem nenhuma notificação</strong>
+    {{else}}
+        {{#each notifications}}
+        
+            <div class="notification">
+                
+                
+                    <span>{{{this.messagem}}}</span>
+                    <button id="delete">
+                        <span class="material-symbols-outlined icon__header">delete</span>
+                    </button>
+                
+            </div>
+        {{/each}}
+    {{/if}}
+</main>

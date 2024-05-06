@@ -1,5 +1,8 @@
+const validator = require("validator");
+
 const RegisterModel = require("../../services/models/registros.js");
-const UserModel = require("../../services/models/usernames.js");
+const NotificationModel = require("../../services/models/notification.js");
+const ProfileModel = require('../../services/models/profile.js')
 const JWT = require("../../utils/jwt.js");
 const SendEmail = require('../../services/email/index.js');
 const Invalid = require('../../services/models/tokensInvalid.js');
@@ -7,13 +10,12 @@ const Invalid = require('../../services/models/tokensInvalid.js');
 async function SendToken(request,response) {
     try {
         const {username,email,password,confirmPass} = request.body;
-        const Username = await RegisterModel.findOne({username});
-        const Email = await RegisterModel.findOne({email});
-        if (!username || Username !== null || username.length < 4) {
-            return response.status(400).json({messagem: 'Esse usuario é invalido ou já existe'})
+        const existingUser = await RegisterModel.findOne({$or: [{username}, {email}]});
+        if (!username || username.length < 4) {
+            return response.status(400).json({messagem: 'O nome de usuário é inválido ou muito curto'})
         };
-        if (!email || Email !== null) {
-            return response.status(400).json({messagem: 'Esse email é invalido ou já existe'});
+        if (!email || !validator.isEmail(email)) {
+            return response.status(400).json({messagem: 'O email é inválido'});
         };
         if (password.length < 8) {
             return response.status(400).json({messagem: 'Sua senha precisa ter no minimo oito caracteres'});
@@ -21,9 +23,17 @@ async function SendToken(request,response) {
         if (confirmPass !== password) {
             return response.status(400).json({messagem: 'Suas senhas não batem'});
         };
+        if (existingUser) {
+            if (existingUser.username === username) {
+                return response.status(400).json({messagem: 'Esse usuario já existe'});
+            };
+            if (existingUser.email === email ){
+                return response.status(400).json({messagem: 'Esse email já está cadastrado'});
+            };
+        };
         const ConfigUser = {username,email,password};
         const token = await JWT(ConfigUser);
-        return response.status(200).json(await SendEmail(email,token,'createuser'));
+        return response.status(200).json(await SendEmail(email, token, 'createuser'));
     }
     catch (e) {
         console.log(e);
@@ -36,14 +46,22 @@ async function SendToken(request,response) {
 async function Register (request,response) {
     try {
         const {username,email,password} = request.user;
-        const {token} = request.token;
+        const Username = await RegisterModel.findOne({username})
+        const Email = await RegisterModel.findOne({email});
+        const token = request.token;
         const TokenInvalid = await Invalid.findOne({token});
         if (TokenInvalid !== null) {
             return response.status(401).json({messagem: 'Token já utilizado'})
         };
+        if (Username || Email) {
+            return response.status(400).json({messagem: 'Esse usuario já existe'});
+        };
+
         await RegisterModel.create({username,email,password});
-        await UserModel.create({username,notification: [{messagem: ` Meus parabéns ${username},sua conta foi criada com sucesso,qualquer dúvida sobre o site,você pode acessar "sobre o projeto" no menu da home :D `}]});
-        
+        await NotificationModel.create({username,notification: [{messagem: ` 
+        <strong> Meus parabéns ${username} </strong>,sua conta foi criada com sucesso,qualquer dúvida sobre o site você poderá acessar <strong>"sobre o projeto"</strong> no menu da home :D `}]});
+        await Invalid.create({token});
+        await ProfileModel.create({username});
         return response.status(201).redirect('/login');
     }
     catch (e) {
