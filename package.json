@@ -4,7 +4,7 @@
   "description": "Esse projeto é um blog criando em nodejs",
   "main": "index.js",
   "engines": {
-    "node": "14.x"
+    "node": "20.x"
   },
   "scripts": {
     "start": "nodemon server.js",
