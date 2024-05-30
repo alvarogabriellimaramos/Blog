@@ -1,3 +1,5 @@
+// arquivo responsável por lida com o registro do usuario
+
 const form = document.querySelector("form");
 const button = document.querySelector('button');
 

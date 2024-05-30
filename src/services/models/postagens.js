@@ -19,7 +19,7 @@ const SchemaPost = new mongoose.Schema({
             },
             date: {
                 type: Date,
-                default: new Date().toISOString()
+                default: Date.now
             },
             category: {
                 type:String,
@@ -42,14 +42,14 @@ const SchemaPost = new mongoose.Schema({
                 comment: String,
                 date: {
                     type: Date,
-                    default: new Date().toISOString()
+                    default: Date.now
                 },
                 response: [{
                     username: String,
                     comment:String,
                     date: {
                         type: Date,
-                        default: new Date().toISOString()
+                        default: Date.now
                     }
                 }]
             }]

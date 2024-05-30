@@ -69,7 +69,8 @@ header button span {
 header .span__text {
     display: none;
 }
-@media (max-width:630px) {
+
+@media (max-width:650px) {
     .report__bug {
         width: 90%;
     }
@@ -84,7 +85,7 @@ header .span__text {
     }
     header #close__menu {
         position: absolute;
-        top: 10px;
+        top: 26px;
         right: 5px;
     }
     header .span__text {
@@ -103,15 +104,6 @@ header .span__text {
         display:block;
         z-index: 1;
         border-bottom-left-radius: 5px;
-        animation: animation__menu 0.2s ;
-    }
-    @keyframes animation__menu {
-        0% {
-            right: -10%;
-        }
-        100% {
-            right:0;
-        }
     }
     header nav ul {
         align-items: start;

@@ -2,49 +2,41 @@
 <main>
     <nav class="nav__main">
         <ul>
-            <li>
-                <a href="#">Recentes</a>
-            </li>
-            <li>
-                <a href="#">Programação</a>
-            </li>
-            <li>
-                <a href="#">Sobre o projeto</a>
-            </li>
+            <li><a href="/recent">Recentes</a></li>
+            <li><a href="/category/programmer">Programação</a></li>
+            <li><a href="/info">Sobre o projeto</a></li>
         </ul>
     </nav>
     <div class="container__post">
-        {{#each PostsAll}}
-            {{#each this.Posts}}
-                <div class="div__post">
-                    <div class="div__username">
-                        <a href="/user/{{../_id}}">
-                            <span> {{../username}} </span>
-                        </a>
-                    </div>
-                    <div class="div__title">
-                        <strong>
-                            <a href="/view-post/{{../_id}}/{{this._id}}">{{this.title}}</a>
-                        </strong>
-                    </div>
-                    <div class="div__likes__comments">
-                         {{#if (and this.comments.[0].response this.comments)}}
+        <div class="div__form">
+            <form class="form__search" id="form__search"><input type="text" placeholder="Search..."
+                    class="search__input"><button><span
+                        class="material-symbols-outlined icon__header">search</span></button></form><strong
+                class="search__text">Postagem não encontrada.</strong>
+        </div>
+        <div class="post__loop">
+            {{#each SortedPost}}
+                {{#if (eq @index 10)}}
+                    {{else}}
+                        <div class="div__post">
+                            <div class="div__username"><a href="/user/{{_id}}"><span> {{username}} </span></a></div>
+                            <div class="div__title"><strong><a href="/view-post/{{_id}}/{{this.postId}}">{{this.title}}</a></strong>
+                            </div>
+                            <div class="div__likes__comments">
+                                {{#if (and this.comments.[0].response this.comments)}}
                                 <span>Comentários: {{length this.comments}}</span> - 
-                                <span>Respostas: {{totalResponses this.comments}}</span> -
-                            {{else}}
-                                 <span>Comentários: 0</span> - 
-                                <span>Respostas: 0 </span> -
-                        {{/if}}
-                         <span style="font-size:13px">
-                            {{formatDate this.date}}
-                         </span>
-                    </div>
-                </div>
-            {{/each}}
-        {{/each}}
+                                <span>Respostas: {{totalResponses this.comments}}</span> - 
+                                    {{else}} 
+                                        <span>Comentários: 0</span> -
+                                        <span>Respostas: 0 </span> - 
+                                {{/if}} <span style="font-size:13px"> {{formatDate this.date}} </span>
+                            </div>
+                        </div>
+            {{/if}}  
+            {{/each}} 
+            </div>
     </div>
-    <div class="next__page">
-        <a href="#" style="display:none;">Anterior</a>
-        <a href="#">Proxima Página</a>
-    </div>
+    <div class="next__page"> <a href="#" style="display:none;">Anterior</a> <a href="#">Proxima Página</a></div>
 </main>
+
+{{> footer}}

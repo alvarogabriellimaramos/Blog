@@ -31,9 +31,25 @@ const hbs = exphbs.create({
         and: function(a,b) {
             return a && b
         },
+        or: function(a,b) {
+            return a || b
+        },
         formatDate: function(date) {
-            const Hour = new Date(date).toLocaleString();
-            return Hour;
+            let Time = Date.now() - (new Date(date).getTime());
+            let seconds = Math.floor(Time / 1000)
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+            let days = Math.floor(hours / 24);
+            if (days > 0) {
+                return `${days} ${days === 1 ? 'dia' : 'dias'}`;
+            } else if (hours > 0) {
+                return `${hours} ${hours === 1 ? 'hora' : 'horas'}`;
+            } else if (minutes > 0) {
+                return `${minutes} ${minutes === 1 ? 'minuto' : 'minutos'}`;
+            } else {
+                return `${seconds} ${seconds === 1 ? 'segundo' : 'segundos'}`;
+            }
+    
         },
         arrayIndex: function(array,index) {
             return array[index]

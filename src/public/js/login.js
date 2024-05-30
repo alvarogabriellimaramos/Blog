@@ -1,3 +1,5 @@
+// arquivo responsável por lida com o login
+
 const inputs = document.querySelectorAll('input');
 const msg = document.querySelector(".msg");
 

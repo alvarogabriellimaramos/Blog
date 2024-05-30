@@ -1,3 +1,5 @@
+// arquivo responsável por renderizar perfis de outros usuarios
+
 const container = document.querySelector(".container");
 
 const div__post = document.querySelectorAll('.div__post');

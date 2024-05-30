@@ -1,0 +1,22 @@
+main {
+    background-color: white;
+    max-width:800px;
+    margin: 20px auto;
+    
+    border-radius:5px;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    line-height: 1.7em;
+}
+
+main h1 {
+    border-bottom:1px solid #ccc;
+    padding: 2.5vh;
+}
+main p {
+    padding:10px;
+}
+main ul {
+    padding-left:35px;
+}

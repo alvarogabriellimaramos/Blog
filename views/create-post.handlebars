@@ -3,15 +3,26 @@
 <main>
     <form>
         <h1>Área para publica novo contéudo</h1>
-        <div style="position: relative; flex-direction:column;"><label for="title" ><strong> Título - </strong></label><input type="text"
-                placeholder="ex: Meu primeiro código em python" id="title"></div>
-        <div style="position: relative; flex-direction:column;"><label for="body"><strong>Corpo da sua publicação - </strong></label>
-                <textarea style="resize: none;" id="body"></textarea>
-                </div>
-            <div class="div__buttons">
-                <div>
-                    <button>Cancelar</button><button id="publicar">Publica</button>
-                </div>
+        <div style="position: relative; flex-direction:column;"><label for="title"><strong> Título -
+                </strong></label><input type="text" placeholder="ex: Meu primeiro código em python" id="title"></div>
+        <div class="div__category">
+            <label for="category">
+                <strong>Categoria</strong>
+            </label>
+            <select>
+                <option value="programação">programação</option>
+                <option value="design">design</option>
+                <option value="outros" >outros assuntos</option>
+            </select>
+        </div>
+        <div style="position: relative; flex-direction:column;"><label for="body"><strong>Corpo da sua publicação -
+                </strong></label>
+            <textarea style="resize: none;" id="body"></textarea>
+        </div>
+        <div class="div__buttons">
+            <div>
+                <button>Cancelar</button><button id="publicar">Publica</button>
             </div>
+        </div>
     </form>
 </main>

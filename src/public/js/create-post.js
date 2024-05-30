@@ -1,7 +1,12 @@
+// arquivo para crianção de post 
+
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
+const select = document.querySelector('select');
+
 export function setup(editor) {
+  // quando o tinymce for inicializado a função dentro do evento será ativada
     editor.on('init', function () {
         form.addEventListener('submit', async event => {
             try {
@@ -16,6 +21,7 @@ export function setup(editor) {
                     body: JSON.stringify({
                         title: input.value,
                         body: content,
+                        category: select.value
                     })
                 });
                 if (data.redirected) {
@@ -24,12 +30,8 @@ export function setup(editor) {
                 }
                 if (!data.redirected) {
                     const {messagem} = await data.json();
-                    if (messagem === 'Token Inválido') {
-                        alert('Você precisa está logado')
-                        return;
-                    }
                     alert(messagem);
-                }
+                };
             }
             catch (e) {
                 console.log(e);

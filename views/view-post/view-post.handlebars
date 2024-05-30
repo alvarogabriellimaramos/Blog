@@ -2,9 +2,9 @@
 
 <main>
     <div class="div__header">
-        <h1>{{object.title}}</h1>
+        <h1>{{SortedComment.title}}</h1>
         <span>
-            <a href="/{{id}}">{{username}}</a>
+            <a href="/user/{{id}}">{{username}}</a>
         </span>
     </div>
     <div class="div__post">
@@ -26,12 +26,13 @@
                     </span> -
                     <span class="date" style="font-size:12px; color: #666;)">{{formatDate this.date}}</span>
                     <p class="content">{{this.comment}}</p>
-                    <form class="form__response__comments" style="margin-top:10px;">
+                    <form class="form__response__comments" style="margin-top:10px;" data-comment-id="{{this._id}}">
                         <textarea style="resize: none;" placeholder="Responde comentário" id="response__comment"></textarea>
                         <button>Enviar</button>
                     </form>
                     <ul style="list-style: none;" class="ul__response__comments">
                         {{#each this.response}}
+                        
                         <li>
                             <span class="username">
                                 <a href="/username/{{this.username}}">{{this.username}}</a>

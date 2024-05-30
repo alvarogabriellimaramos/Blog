@@ -1,3 +1,5 @@
+// arquivo para edição do perfil do usuario
+
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
@@ -5,6 +7,7 @@ const span__biografy = document.querySelector('.span__biografy');
 
 const span__text = document.querySelector(".span__text");
 export function setup(editor) {
+    // quando o tinymce for inicializando a função dentro do evento será acionada
     editor.on('init', function () {
         tinymce.get("biography").setContent(span__biografy.innerHTML);
         form.addEventListener('submit',async function (event) {
@@ -23,7 +26,7 @@ export function setup(editor) {
                 if (DataJson.messagem === 'Perfil atualizado com sucesso') {
                     window.location.reload();
                     return;
-                }
+                };
                 alert(DataJson.messagem);
             }
             catch (e) {console.log(e)};

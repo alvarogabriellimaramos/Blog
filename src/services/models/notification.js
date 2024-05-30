@@ -5,18 +5,7 @@ const Schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    id: {
-        type: String,
-        default: 'undefined'
-    },
-    notification: [
-        {
-            messagem: String
-        },
-        {
-            date: Date
-        }
-    ]
+    notification: [{messagem: String},{date: Date,default: Date.now}]
 });
 
 module.exports = mongoose.model('notification',Schema);

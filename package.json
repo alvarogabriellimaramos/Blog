@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Esse projeto é um blog criando em nodejs",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "nodemon server.js",
     "vercel-build": "npx prisma generate && npx prisma migrate deploy"
@@ -21,7 +24,8 @@
     "mongoose": "^8.3.2",
     "nodemailer": "^6.9.13",
     "sanitize-html": "^2.13.0",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
+    "ws": "^8.17.0"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",

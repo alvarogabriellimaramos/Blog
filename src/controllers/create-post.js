@@ -4,7 +4,7 @@ const RegisterModel = require('../services/models/registros');
 
 module.exports = async function (request,response) {
     try {
-        const {title,body} = request.body;
+        const {title,body,category} = request.body;
         const {username} = request.user;
         const Username = await PostUser.findOne({username});
         const User = await RegisterModel.findOne({username});
@@ -20,18 +20,24 @@ module.exports = async function (request,response) {
                 username,
                 photo: '',
                 
-                Posts: [{title:title,body:body}]
+                Posts: [{title:title,category:category,body:body}]
             });
             return response.status(200).redirect('/');
         };
         Username.Posts.push({
             title:title,
+            category:category,
             body:body
         });
         await Username.save();
         return response.status(200).redirect('/');
     }
     catch (e) {
-        console.log(e)
+        return response.status(500).render('err/500',{
+            title: "Err server",
+            img: "http://localhost:8080/imgs/node.png",
+            jsFiles: ["http://localhost:8080/js/index.js"],
+            cssFiles: ["http://localhost:8080/css/header.css",'http://localhost:8080/css/index.css']
+        })
     };
 };

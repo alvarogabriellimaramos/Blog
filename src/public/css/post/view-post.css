@@ -34,7 +34,6 @@ main .div__header {
 .div__post h1 {
     margin-bottom: 10px;
     color: #333;
-    font-size: 24px;
 }
 
 .div__body {
@@ -139,6 +138,9 @@ main .div__header {
 
     .div__header h1 {
         font-size: 1.5em;
+    }
+    .div__post h1 {
+        font-size: 26px;
     }
     .create__comments{
         padding:5px;

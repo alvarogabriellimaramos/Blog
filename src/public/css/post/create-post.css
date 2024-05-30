@@ -11,6 +11,17 @@ main form {
     flex-direction: column;
     gap: 20px;
 }
+
+main form select {
+    padding:5px;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+main form .div__category {
+    flex-direction: row;
+    align-items: center;
+}
 main form h1 {
     text-align: center;
     margin-top: 5vh;

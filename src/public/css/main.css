@@ -1,4 +1,5 @@
 main {
+    position: relative;
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
@@ -10,7 +11,34 @@ main {
     border-radius: 5px;
     margin-bottom: 20px;
 }
-
+main .form__search {
+    display: flex;
+    margin-bottom: 15px;
+    gap:10px;
+}
+main .form__search input {
+    padding:10px;
+    width: 100%;
+    font-size: 1em;
+    border-radius: 5px;
+    background-color: #aaf6fa;
+    border: none;
+}
+main .form__search input:focus {
+    outline: 1px solid #007bff;
+}
+main .form__search button {
+    padding:5px;
+    border: none;
+    font-size: 1.1em;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+main .div__form strong {
+    display:none;
+}
 .nav__main ul {
     list-style: none;
     padding: 0;

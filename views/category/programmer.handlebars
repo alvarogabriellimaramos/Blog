@@ -1,0 +1,7 @@
+{{> header}}
+<main><h1>Programação</h1><div class="container__post">
+        {{#each Programmer}}<div class="div__post"><div class="div__username"><a href="/user/{{this.id}}"><span> {{this.username}} </span></a></div><div class="div__title"><strong><a href="/view-post/{{this.id}}/{{this.postId}}">{{this.title}}</a></strong></div><div class="div__likes__comments">
+                             {{#if (and this.comments.[0].response this.comments)}}<span>Comentários: {{length this.comments}}</span> - <span>Respostas: {{totalResponses this.comments}}</span> -
+                                {{else}}<span>Comentários: 0</span> - <span>Respostas: 0 </span> -
+                            {{/if}}<span style="font-size:13px">{{formatDate this.date}}</span>
+                        </div></div>{{/each}}</div></main>

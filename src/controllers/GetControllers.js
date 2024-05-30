@@ -8,13 +8,25 @@ const RegisterModel = require("../services/models/registros");
 
 module.exports = {
     async Home (request,response) {
-        const PostsAll = await PostModel.find();
+        const users = await PostModel.find();
+        const SortedPost = users.flatMap(user => {
+            return user.Posts.map(post => {
+                return {
+                    username: user.username,
+                    _id: user._id,
+                    postId: post._id,
+                    title: post.title,
+                    date: post.date,
+                    comments: post.comments
+                }
+            })
+        }).sort((a,b) => b.date - a.date);
         return response.render('home',{
             cssFiles: ["css/header.css","css/main.css",'css/index.css'],
-            jsFiles: ["js/index.js"],
+            jsFiles: ["js/index.js",'js/search.js'],
             title: "Home",
             PORT: process.env.PORT,
-            PostsAll,
+            SortedPost,
             img: "http://localhost:8080/imgs/node.png"
         });
     },
@@ -37,6 +49,15 @@ module.exports = {
             img: 'http://localhost:8080/imgs/cadeado.png'
         });
     } ,
+    Info (request,response) {
+        return response.status(200).render('info/info',{
+            title: 'Sobre o projeto',
+            cssFiles: ["http://localhost:8080/css/index.css","http://localhost:8080/css/header.css","http://localhost:8080/css/info/info.css"],
+            img: 'http://localhost:8080/imgs/node.png',
+            jsFiles: ["http://localhost:8080/js/index.js"]
+        });
+    }
+    ,
     async CreatePost(request,response,next) {
         return response.status(200).render('create-post',{
             title: 'Criar nova postagem',
@@ -59,15 +80,24 @@ module.exports = {
             return response.status(404).redirect('/404');
         };
         const Postagem = await PostModel.findById(id);
-        if (!Postagem) {
-            return response.status(404).redirect("/404")
-        }
+
         const PostUser = Postagem.Posts.filter(post => post._id.toString() === id2);
 
         const [object] = PostUser;
+        if (!Postagem || !object) {
+            return response.status(404).redirect("/404")
+        }
+        object.comments.sort((a, b) => new Date(b.date) - new Date(a.date)).map(comment => {
+            return {
+                ...comment,
+                response: comment.response.sort((a, b) => new Date(b.date) - new Date(a.date))
+            }
+        });
+        
         return response.status(200).render('view-post/view-post',{
             title: object.title,
             object,
+            
             username: Postagem.username,
             id,
             id2,
@@ -105,7 +135,6 @@ module.exports = {
         };
         const PostUser = await PostModel.findById(idParam);
         const User = await UserModel.findOne({username: PostUser.username});
-        console.log(PostUser)
         return response.status(200).render('view-user/view-user',{
             title: PostUser.username,
             cssFiles: [
@@ -163,13 +192,40 @@ module.exports = {
     async MyPost (request,response) {
         const {username} = request.user;
         const PostUser = await PostModel.findOne({username});
-        console.log(PostUser)
         return response.status(200).render('my-posts/my-posts',{
             title: 'Minhas Postagens',
             cssFiles: ["css/header.css","css/index.css",'css/my-post/my-post.css'],
-            jsFiles: ["js/index.js"],
+            jsFiles: ["js/index.js","js/my-post.js"],
             PostUser,
             img: 'imgs/node.png'
         });
+    },
+    async Programmer (request,response) {
+        const Posts = await PostModel.find();
+        const Programmer = Posts.flatMap(user => {
+            return user.Posts.map(post => {
+                return {
+                    id: user._id,
+                    title: post.title,
+                    date: post.date,
+                    username: user.username,
+                    postId: post._id,
+                    comments: post.comments,
+                    category: post.category
+                }
+            });
+        }).filter(post => post.category === 'programação')
+        return response.status(200).render('category/programmer',{
+            title: 'Programação',
+            cssFiles: [
+                "http://localhost:8080/css/index.css",
+                "http://localhost:8080/css/header.css",
+                "http://localhost:8080/css/category.css"
+            ],
+            jsFiles: ["http://localhost:8080/js/index.js"],
+            
+            img: 'http://localhost:8080/imgs/node.png',
+            Programmer
+        })
     }
 };

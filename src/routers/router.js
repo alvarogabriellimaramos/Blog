@@ -12,6 +12,8 @@ const Comments = require("../controllers/create-comments.js");
 const GetControll = require('../controllers/GetControllers');
 const Notification = require('../controllers/notification.js');
 const EditProfilePut = require('../controllers/puts/index.js');
+const ActionsPost = require('../controllers/actionsPost/index.js')
+const Search = require("../controllers/searchPost.js");
 
 const JWT = require('../middleware/jwt/index.js');
 const MidErr = require('../middleware/err/err.js')
@@ -22,6 +24,7 @@ router.use('/jwt',JWT);
 
 
 router.get('/',GetControll.Home);
+router.get('/info',GetControll.Info);
 router.get('/login',GetControll.Login);
 
 router.get("/register",GetControll.Register)
@@ -34,10 +37,10 @@ router.get("/view-notification",JWT,GetControll.ViewNotification);
 router.get("/username/:username",GetControll.GetUsername);
 router.get('/view-post/:id/:id2',GetControll.ViewPost);
 router.get('/user/:id',GetControll.ViewProfileUser);
-
-
+router.get('/category/programmer',GetControll.Programmer);
 
 router.post('/sendToken',Register.SendToken);
+
 router.post('/login',Login);
 router.post('/create-post',JWT,function (request,response,next) {
     const {header,strong,paragrafo,ul} = request.body;
@@ -45,7 +48,12 @@ router.post('/create-post',JWT,function (request,response,next) {
     next();
 },CreatePost);
 router.post('/token',async (request,response) => {
+    const Invalid = require('../services/models/tokensInvalid.js');
     const Token = request.body.token;
+    const TokenInvalid = await Invalid.findOne({token:Token})
+    if (TokenInvalid) {
+        return response.status(401).json({messagem: 'Token Invalído'})
+    };
     jwt.verify(Token,process.env.SECRET,function(err) {
         if (err) {
             return response.status(401).json({messagem: 'Token Invalído'});
@@ -55,11 +63,12 @@ router.post('/token',async (request,response) => {
 });
 router.post("/create-comments",JWT,Comments.Comments);
 router.post("/response-comments",JWT,Comments.ResponseComment);
-
+router.post('/search',Search);
 router.put('/edit-profile',JWT,EditProfilePut);
 
 router.delete("/logout",JWT,Logout);
 router.delete('/delete-notification',JWT,Notification);
+router.delete('/delete-post',JWT,ActionsPost.DeletePost);
 
 router.use('/404',MidErr);
 router.use(MidErr)
